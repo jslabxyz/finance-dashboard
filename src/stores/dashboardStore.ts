@@ -4,8 +4,8 @@ import type { Transaction, FilterState, TransactionData } from '@/types';
 import { DEFAULT_FILTERS } from '@/lib/constants';
 
 // Keys for localStorage
-const USER_TRANSACTIONS_KEY = 'jason-finance-user-transactions';
-const DELETED_TRANSACTIONS_KEY = 'jason-finance-deleted-transactions';
+const USER_TRANSACTIONS_KEY = 'demo-finance-user-transactions';
+const DELETED_TRANSACTIONS_KEY = 'demo-finance-deleted-transactions';
 
 interface DashboardState {
   // Data
@@ -236,7 +236,7 @@ export const useDashboardStore = create<DashboardState>()(
       })
     }),
     {
-      name: 'jason-finance-dashboard',
+      name: 'demo-finance-dashboard',
       partialize: (state) => ({
         filters: state.filters,
         isSidebarOpen: state.isSidebarOpen

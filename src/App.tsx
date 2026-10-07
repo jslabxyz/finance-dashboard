@@ -51,7 +51,8 @@ function ErrorDisplay({ message }: { message: string }) {
         <h2 className="text-xl font-bold text-red-600 mb-2">Error Loading Data</h2>
         <p className="text-gray-600">{message}</p>
         <p className="text-sm text-gray-500 mt-4">
-          Make sure <code className="bg-gray-100 px-1 rounded">transactions.json</code> is in the{' '}
+          Regenerate the synthetic fixture with <code className="bg-gray-100 px-1 rounded">npm run data:generate</code>.
+          The expected <code className="bg-gray-100 px-1 rounded">transactions.json</code> is in the{' '}
           <code className="bg-gray-100 px-1 rounded">public/data/</code> folder.
         </p>
       </div>

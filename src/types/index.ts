@@ -35,6 +35,8 @@ export type AccountType = 'Current Account' | 'Credit Card' | 'Tax Free Savings'
 export interface TransactionData {
   transactions: Transaction[];
   metadata: {
+    synthetic: true;
+    fixtureVersion: number;
     exportedAt: string;
     totalRecords: number;
     dateRange: { start: string; end: string };

@@ -9,6 +9,8 @@ npm run dev      # Start Vite dev server (hot reload)
 npm run build    # TypeScript check + Vite production build
 npm run lint     # ESLint
 npm run preview  # Preview production build locally
+npm run data:generate # Regenerate invented demonstration fixtures
+npm run check:data    # Reject altered fixtures and private exports
 ```
 
 ## Architecture
@@ -17,7 +19,7 @@ npm run preview  # Preview production build locally
 
 The app follows a unidirectional data flow:
 
-1. **Data Loading** (`useTransactions` hook) — Fetches `/data/transactions.json` on mount, merges with user modifications from localStorage
+1. **Data Loading** (`useTransactions` hook) — Fetches synthetic `/data/transactions.json` on mount without cache reuse, rejects data without synthetic provenance, and merges only demo-storage modifications
 2. **Global State** (`dashboardStore.ts`) — Zustand store holds transactions, filters, and UI state; persists filters to localStorage
 3. **Derived Data** (`useDerivedData` hook) — All aggregations (KPIs, monthly, category, bank, merchant) computed via `useMemo` from filtered transactions
 4. **Rendering** — Components receive derived data as props, no direct store access in chart components
@@ -48,7 +50,9 @@ The app follows a unidirectional data flow:
 
 ### Data Format
 
-Transaction data lives in `public/data/transactions.json`. Required fields per transaction: `id`, `date`, `merchant`, `category`, `subCategory`, `spendingGroup`, `transactionType`, `amount`, `bankName`, `accountType`, `payMonth`.
+Only generated synthetic demonstration data may live in `public/data/transactions.json`. Never commit financial exports or paste their records into source, documentation, or tests. Public assets are directly downloadable. Update the invented fixture generator, regenerate the fixture, and run the safety guard before building or committing. Metadata must include `synthetic: true` and `fixtureVersion`.
+
+Required fields per transaction are defined in `src/types/index.ts`, including `enhancedDescription`, `account`, and `description`. Use visibly invented demo labels. Do not derive fixture values from genuine records. Raw exports must remain outside this repository. Existing personal browser-storage keys are deliberately not read or erased by the demo.
 
 ### Currency
 

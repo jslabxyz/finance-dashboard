@@ -22,6 +22,9 @@ export function DashboardHeader() {
           <h1 className="text-3xl font-bold text-gray-900">
             Financial Dashboard
           </h1>
+          <p className="mt-1 text-sm font-medium text-amber-700">
+            Synthetic demonstration data. Do not enter personal financial records.
+          </p>
           <div className="mt-2 flex items-center gap-4 text-sm text-gray-500">
             <span className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />

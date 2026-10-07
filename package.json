@@ -4,10 +4,18 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "predev": "npm run check:data",
     "dev": "vite",
+    "prebuild": "npm run check:data",
     "build": "tsc -b && vite build",
+    "postbuild": "node scripts/check-data-safety.mjs --preview",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "prepreview": "node scripts/check-data-safety.mjs --preview",
+    "preview": "vite preview",
+    "data:generate": "node scripts/generate-demo-data.mjs",
+    "check:data": "node scripts/check-data-safety.mjs",
+    "test:data": "node --test scripts/check-data-safety.test.mjs",
+    "hooks:install": "node scripts/setup-data-safety-hook.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

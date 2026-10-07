@@ -29,3 +29,27 @@ npm-debug.log*
 
 # Vite
 vite.config.ts.timestamp-*
+
+# Keep real financial exports out of this public demo repository.
+exports/
+raw-data/
+private-data/
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.ods
+*.ofx
+*.qfx
+*.qif
+*.pdf
+*.zip
+*.7z
+*.rar
+*.sqlite
+*.sqlite3
+*.db
+*.parquet
+*.feather
+public/data/*
+!public/data/transactions.json
